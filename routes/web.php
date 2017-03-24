@@ -11,14 +11,10 @@
 |
 */
 
-Route::get('/', function() {
+Route::post('whisper', "ChatController@sendWhisper")->middleware(['cors']);
+
+Route::get('/', function(){
     // this doesn't do anything other than to
     // tell you to go to /fire
     return "go to /send";
-});
-
-Route::get('send/{message}', function ($message) {
-    // this fires the event
-    event(new App\Events\ChatMessage($message));
-    return "event fired";
 });
